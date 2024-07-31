@@ -1,22 +1,149 @@
-### AL ###
-#Template for AL projects for Dynamics 365 Business Central
-#launch.json folder
-.vscode/
-#Cache folder
-.alcache/
-#Symbols folder
-.alpackages/
-#Snapshots folder
-.snapshots/
-#Testing Output folder
-.output/
-#Extension App-file
-*.app
-#Rapid Application Development File
-rad.json
-#Translation Base-file
-*.g.xlf
-#License-file
-*.flf
-#Test results file
-TestResults.xml
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>زيادة متابعين وسائل التواصل الاجتماعي</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>زيادة متابعين وسائل التواصل الاجتماعي</h1>
+        <div class="platforms">
+            <div class="platform">
+                <h2>إنستغرام</h2>
+                <form class="followersForm">
+                    <label for="instagram-username">اسم المستخدم:</label>
+                    <input type="text" id="instagram-username" name="instagram-username" required>
+                    <label for="instagram-followers">عدد المتابعين المطلوب:</label>
+                    <input type="number" id="instagram-followers" name="instagram-followers" required>
+                    <button type="submit">زيادة المتابعين</button>
+                </form>
+            </div>
+            <div class="platform">
+                <h2>فيسبوك</h2>
+                <form class="followersForm">
+                    <label for="facebook-username">اسم المستخدم:</label>
+                    <input type="text" id="facebook-username" name="facebook-username" required>
+                    <label for="facebook-followers">عدد المتابعين المطلوب:</label>
+                    <input type="number" id="facebook-followers" name="facebook-followers" required>
+                    <button type="submit">زيادة المتابعين</button>
+                </form>
+            </div>
+            <div class="platform">
+                <h2>تويتر</h2>
+                <form class="followersForm">
+                    <label for="twitter-username">اسم المستخدم:</label>
+                    <input type="text" id="twitter-username" name="twitter-username" required>
+                    <label for="twitter-followers">عدد المتابعين المطلوب:</label>
+                    <input type="number" id="twitter-followers" name="twitter-followers" required>
+                    <button type="submit">زيادة المتابعين</button>
+                </form>
+            </div>
+            <div class="platform">
+                <h2>تيك توك</h2>
+                <form class="followersForm">
+                    <label for="tiktok-username">اسم المستخدم:</label>
+                    <input type="text" id="tiktok-username" name="tiktok-username" required>
+                    <label for="tiktok-followers">عدد المتابعين المطلوب:</label>
+                    <input type="number" id="tiktok-followers" name="tiktok-followers" required>
+                    <button type="submit">زيادة المتابعين</button>
+                </form>
+            </div>
+        </div>
+        <div id="message"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.platforms {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.platform {
+    background-color: #fafafa;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    background-color: #0095f6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #007bb5;
+}
+
+#message {
+    margin-top: 20px;
+    color: #333;
+}
+
+document.querySelectorAll('.followersForm').forEach(form => {
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const platform = this.parentElement.querySelector('h2').textContent;
+        const username = this.querySelector('input[type="text"]').value;
+        const followers = this.querySelector('input[type="number"]').value;
+
+        if (username && followers) {
+            document.getElementById('message').textContent = `تم إرسال طلب زيادة المتابعين لحساب ${username} على منصة ${platform} لعدد ${followers} متابع.`;
+        } else {
+            document.getElementById('message').textContent = 'يرجى ملء جميع الحقول.';
+        }
+    });
+});
